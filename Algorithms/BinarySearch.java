@@ -1,27 +1,35 @@
 import java.util.*;
 
-class LinearSearch
+class BinarySearch
 {
-    public static boolean LinearSearch(int Brr[], int iNo)
+    public static boolean BinarySearch(int Brr[], int iNo)
     {
-        int i = 0;
+        int iStart = 0, iMid = 0, iEnd = Brr.length-1;
+        boolean bResult = false;
 
-        for(i = 0; i < Brr.length; i++)
-        {
-            if(Brr[i] == iNo)
+        while(iStart <= iEnd)
+        {   //        4    + (7 - 4) / 2
+            //        4    + 3 / 2
+            //        4    + 1
+            //          5
+            iMid = iStart + (iEnd - iStart) / 2;
+
+            if(Brr[iMid] == iNo)
             {
+                bResult = true;
                 break;
             }
-        }
 
-        if(i < Brr.length)
-        {
-            return true;
+            if(iNo > Brr[iMid])
+            {
+                iStart = iMid + 1;
+            }
+            else
+            {
+                iEnd = iMid - 1;
+            }
         }
-        else
-        {
-            return false;
-        }
+        return bResult;
     }
 
     public static void main(String Arg[])
@@ -53,7 +61,7 @@ class LinearSearch
         System.out.println("Enter the element that you want to search : ");
         iValue = sobj.nextInt();
 
-        bRet = LinearSearch(Arr,iValue);
+        bRet = BinarySearch(Arr,iValue);
 
         if(bRet == true)
         {
@@ -65,3 +73,9 @@ class LinearSearch
         }
     }
 }
+
+// 13
+
+//  13      15      17      24      38      45      67      77      90      98      101     111     230    
+
+//          38

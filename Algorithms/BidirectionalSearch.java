@@ -1,27 +1,21 @@
 import java.util.*;
 
-class LinearSearch
+class BidirectionalSearch
 {
-    public static boolean LinearSearch(int Brr[], int iNo)
+    public static boolean LinearSearchBidirectional(int Brr[], int iNo)
     {
-        int i = 0;
+        int iStart = 0, iEnd = 0;
+        boolean bResult = false;
 
-        for(i = 0; i < Brr.length; i++)
+        for(iStart = 0, iEnd = Brr.length-1; iStart <= iEnd ; iStart++, iEnd--)
         {
-            if(Brr[i] == iNo)
+            if(Brr[iStart] == iNo || Brr[iEnd] == iNo)
             {
+                bResult = true;
                 break;
             }
         }
-
-        if(i < Brr.length)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return bResult;
     }
 
     public static void main(String Arg[])
@@ -53,7 +47,7 @@ class LinearSearch
         System.out.println("Enter the element that you want to search : ");
         iValue = sobj.nextInt();
 
-        bRet = LinearSearch(Arr,iValue);
+        bRet = LinearSearchBidirectional(Arr,iValue);
 
         if(bRet == true)
         {
